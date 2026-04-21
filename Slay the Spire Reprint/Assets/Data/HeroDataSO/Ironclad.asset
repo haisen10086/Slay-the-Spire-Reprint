@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc5970483d92e64e9107d58cd28c486, type: 3}
+  m_Name: Ironclad
+  m_EditorClassIdentifier: Assembly-CSharp::HeroDataSO
+  <Image>k__BackingField: {fileID: 21300000, guid: 42b2bb9c61621f947a854972343ab8ea, type: 3}
+  <Health>k__BackingField: 60
+  <Deck>k__BackingField:
+  - {fileID: 11400000, guid: 6c692703b836ec648bd2ce0edc517ecd, type: 2}
+  - {fileID: 11400000, guid: 6c692703b836ec648bd2ce0edc517ecd, type: 2}
+  - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  - {fileID: 11400000, guid: 884f5c98b2ac82540b6e21e11b095d82, type: 2}
+  - {fileID: 11400000, guid: 884f5c98b2ac82540b6e21e11b095d82, type: 2}
+  - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
+  - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
+  - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
+  - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
