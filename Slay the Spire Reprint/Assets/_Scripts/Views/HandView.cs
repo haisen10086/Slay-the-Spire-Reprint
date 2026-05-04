@@ -54,3 +54,4 @@ public class HandView : MonoBehaviour
         yield return new WaitForSeconds(duration);
     }
 }
+
