@@ -15,7 +15,12 @@ public class ActionSystem : MonoBehaviour
 
     public void Perform(GameAction action, System.Action OnPerformFinished = null)
     {
-        if (IsPerforming) return;
+        if (IsPerforming)
+        {
+            Debug.Log("当前有多个Perform执行了");
+            return;
+        }
+        Debug.Log("当前执行的是:"+ action.ToString());
         IsPerforming = true;
         StartCoroutine(Flow(action, () =>
         {

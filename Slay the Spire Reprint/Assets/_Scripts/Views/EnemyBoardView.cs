@@ -28,4 +28,13 @@ public class EnemyBoardView : MonoBehaviour
         yield return tween.WaitForCompletion();
         Destroy(enemyView.gameObject);
     }
+
+    //移除并销毁所有敌人
+    public IEnumerator RemoveAllEnemyView()
+    {
+        for (int i = EnemyViews.Count - 1; i>=0; i--)
+        {
+            yield return StartCoroutine(RemoveEnemyView(EnemyViews[i]));
+        }
+    }
 }

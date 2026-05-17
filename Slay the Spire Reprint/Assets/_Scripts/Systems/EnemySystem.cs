@@ -40,9 +40,32 @@ public class EnemySystem : MonoBehaviour
     //初始化敌人系统，创建多个敌人视图
     public void Setup(List<EnemyDataSO> enemyDataSOs)
     {
+        Debug.Log("开始加载敌人列表");
         foreach(var enemyDataSO in enemyDataSOs)
         {
+            Debug.Log("加载敌人"+ enemyDataSO.id);
             enemyBoardView.AddEnemy(enemyDataSO);
+        }
+    }
+    //销毁所有敌人
+    public void RemoveAllEnemyView()
+    {
+        //StartCoroutine(enemyBoardView.RemoveAllEnemyView());
+        for (int i = enemyBoardView.EnemyViews.Count - 1; i >= 0; i--)
+        {
+            KillEnemyGA killEnemyGA = new KillEnemyGA(enemyViews[i]);
+            Debug.Log("杀死敌人:" + killEnemyGA.TargetEnemyView.myEnemyDataSO.id);
+            ActionSystem.Instance.Perform(killEnemyGA);
+        }
+        Debug.Log("当前场景敌人数量:"+enemyBoardView.EnemyViews.Count);
+    }
+    //等待特定时间
+    public void WaitTime(float duration)
+    {
+        float x=0;
+        while(x < duration)
+        {
+            x += Time.deltaTime;
         }
     }
 
@@ -77,5 +100,13 @@ public class EnemySystem : MonoBehaviour
     public IEnumerator KillEnemyPerformer(KillEnemyGA killEnemyGA)
     {
         yield return enemyBoardView.RemoveEnemyView(killEnemyGA.TargetEnemyView);
+
+        //每次杀死敌人都判断以下敌人棋盘是否为空,为空就加载奖励界面,
+        if(enemyBoardView.EnemyViews.Count == 0)
+        {
+            AwardSystem.Instance.AwardShow();
+            CardSystem.Instance.ReMoveAllPileAddReaction();
+        }
+
     }
 }

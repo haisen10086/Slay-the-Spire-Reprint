@@ -4,19 +4,19 @@ using UnityEngine;
 //¿¨ÅÆÄ£ÐÍ
 public class Card 
 {
-    public string Title => cardData.name;
-    public string Description => cardData.Description;
-    public Sprite Image => cardData.Image;
-    public Effect ManualTargetEffect => cardData.ManualTargetEffect;
-    public List<AutoTargetEffect> OtherEffects => cardData.OtherEffects;  
+    public string Title => CardData.name;
+    public string Description => CardData.Description;
+    public Sprite Image => CardData.Image;
+    public Effect ManualTargetEffect => CardData.ManualTargetEffect;
+    public List<AutoTargetEffect> OtherEffects => CardData.OtherEffects;  
 
     public int Mana {  get; private set; }
 
 
-    private readonly CardDataSO cardData;
+    public  CardDataSO CardData {  get; private set; }
      public Card(CardDataSO cardDataSO)
     {
-        cardData = cardDataSO;
+        CardData = cardDataSO;
         Mana = cardDataSO.Mana;
     }
 }

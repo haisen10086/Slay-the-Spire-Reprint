@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3a60e3afacf5d4428910520c7caf8e8, type: 3}
-  m_Name: RedSlime
+  m_Name: GreenLouse
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
-  <Image>k__BackingField: {fileID: 21300000, guid: 90f7b1c84d35d344b849aa50db4eacba, type: 3}
+  <id>k__BackingField: "\u7EFF\u8671\u866B"
+  <Image>k__BackingField: {fileID: 21300000, guid: 2479e02b2deb5794b97f09a8cee47605, type: 3}
   <Health>k__BackingField: 30
   <AttckPower>k__BackingField: 7

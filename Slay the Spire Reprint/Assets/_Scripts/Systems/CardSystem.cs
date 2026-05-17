@@ -63,6 +63,24 @@ public class CardSystem : MonoBehaviour
         }
     }
 
+    public void ReMoveAllPile()
+    {
+        DiscardAllCardsGA discardAllCardsGA = new();
+        ActionSystem.Instance.Perform(discardAllCardsGA);
+        drawPile.Clear();
+        discardPile.Clear();
+    }
+    /// <summary>
+    /// 将弃牌作为链反应执行
+    /// </summary>
+    public void ReMoveAllPileAddReaction()
+    {
+        DiscardAllCardsGA discardAllCardsGA = new();
+        ActionSystem.Instance.AddReaction(discardAllCardsGA);
+        drawPile.Clear();
+        discardPile.Clear();
+    }
+
     //performer
     //抽牌执行者函数
     private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardGA)
