@@ -46,6 +46,7 @@ public class EnemySystem : MonoBehaviour
             Debug.Log("加载敌人"+ enemyDataSO.id);
             enemyBoardView.AddEnemy(enemyDataSO);
         }
+        Debug.Log("敌人数据已经加载完全");
     }
     //销毁所有敌人
     public void RemoveAllEnemyView()

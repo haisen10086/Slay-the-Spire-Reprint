@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91dab158fa34774fa80fd869d89aac0, type: 3}
+  m_Name: IroncladCardPool
+  m_EditorClassIdentifier: Assembly-CSharp::CardPoolDataSO
+  <CommonCardPool>k__BackingField:
+  - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
+  - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  <UncommonCardPool>k__BackingField:
+  - {fileID: 11400000, guid: 6c692703b836ec648bd2ce0edc517ecd, type: 2}
+  <RareCardPool>k__BackingField:
+  - {fileID: 11400000, guid: 884f5c98b2ac82540b6e21e11b095d82, type: 2}

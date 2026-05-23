@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
-  m_Name: FireBall
+  m_Name: "\u706B\u7403\u653B\u51FB"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
   <Description>k__BackingField: "\u9020\u62104\u70B9\u4F24\u5BB3"
   <Mana>k__BackingField: 0
@@ -18,6 +18,8 @@ MonoBehaviour:
   <ManualTargetEffect>k__BackingField:
     rid: 9102446947366076491
   <OtherEffects>k__BackingField: []
+  <CardType>k__BackingField: 0
+  <CardrarityType>k__BackingField: 0
   references:
     version: 2
     RefIds:

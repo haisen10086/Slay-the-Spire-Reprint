@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CardAward : Award
 {
-    public Card cardAward;
+    public List<Card> cardAwardList;
 
-    public void Setup(Card cardAward, string awardText, AwardType awardType, Sprite awardSprite)
+    public void Setup(List<Card> cardAwardList, string awardText, AwardType awardType, Sprite awardSprite)
     {
-        this.cardAward = cardAward;
+        this.cardAwardList = cardAwardList;
         SetupBase(awardType, awardText, awardSprite);
     }
 

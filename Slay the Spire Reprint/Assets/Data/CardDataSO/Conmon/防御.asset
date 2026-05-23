@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
-  m_Name: Armor UP
+  m_Name: "\u9632\u5FA1"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
-  <Description>k__BackingField: Add 5 armor
+  <Description>k__BackingField: "\u52A0\u4E94\u70B9\u9632\u5FA1"
   <Mana>k__BackingField: 1
   <Image>k__BackingField: {fileID: 21300000, guid: c29f8fa772ccfca4fb790ccb8ae60e25, type: 3}
   <ManualTargetEffect>k__BackingField:
@@ -22,6 +22,8 @@ MonoBehaviour:
       rid: 9102447108112515147
     <Effect>k__BackingField:
       rid: 9102447108112515148
+  <CardType>k__BackingField: 1
+  <CardrarityType>k__BackingField: 0
   references:
     version: 2
     RefIds:

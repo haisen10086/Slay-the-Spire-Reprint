@@ -74,7 +74,7 @@ public class MatchSetupSystem : MonoBehaviour
         else Debug.Log("当前敌人数据不为空");
         Debug.Log("敌人数据数量：" + enemyDataSO.Count);
         EnemySystem.Instance.Setup(enemyDataSO);
-        CardSystem.Instance.SetUp(heroDataSO.Deck);
+        CardSystem.Instance.SetUpClonedCard(HeroSystem.Instance.Deck);
 
         DrawCardsGA drawCardsGA = new(5);
         ActionSystem.Instance.AddReaction(drawCardsGA);

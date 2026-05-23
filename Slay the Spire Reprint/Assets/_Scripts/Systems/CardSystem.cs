@@ -63,6 +63,17 @@ public class CardSystem : MonoBehaviour
         }
     }
 
+    //将Card的克隆复制到抽牌堆里
+    public void SetUpClonedCard(List<Card> deckData)
+    {
+        foreach (var card in deckData)
+        {
+            Card card1 = card.Clone();
+            drawPile.Add(card1);
+        }
+        Debug.Log("场景内的卡牌数据已经加载完全");
+    }
+
     public void ReMoveAllPile()
     {
         DiscardAllCardsGA discardAllCardsGA = new();
@@ -169,7 +180,7 @@ public class CardSystem : MonoBehaviour
         CardView cardView = CardViewCreator.Instance.CreateCardView(card, drawPilePoint.position, drawPilePoint.rotation);
         yield return handView.AddCard(cardView);
     }
-    //将所有弃牌堆的拍并入抽牌堆
+    //将所有弃牌堆的牌并入抽牌堆
     private void RefillDeck()
     {
         drawPile.AddRange(discardPile);
@@ -187,4 +198,41 @@ public class CardSystem : MonoBehaviour
         Destroy(cardView.gameObject);
     }
 
+    /// <summary>
+    ///随机生成卡牌数据实例
+    ///普通：65%
+    ///罕见：25%
+    ///稀有：10%
+    ///当前默认生成战士牌组
+    /// </summary>
+    public Card GenerateCard()
+    {
+        CardPoolDataSO cardPool = AllDataSystem.Instance.IroncladCardPool;
+        int rand = Random.Range(0, 100);
+        CardDataSO cardDataSO;
+        if(rand < 65)
+            cardDataSO = cardPool.CommonCardPool[Random.Range(0, cardPool.CommonCardPool.Count)];
+        else if(rand < 90)
+            cardDataSO = cardPool.UncommonCardPool[Random.Range(0, cardPool.UncommonCardPool.Count)];
+        else cardDataSO = cardPool.RareCardPool[Random.Range(0, cardPool.RareCardPool.Count)];
+        Card card = new(cardDataSO);
+        return card;
+    }
+
+    //根据卡牌类型获得中文版文字
+    public static string GetChinceseTypeText(CardType cardType)
+    {
+        switch (cardType)
+        {
+            case CardType.Attack:
+                return "攻击";
+            case CardType.Skill:
+                return "技能";
+            case CardType.Power:
+                return "能力";
+            default:
+                break;
+        }
+        return "";
+    }
 }

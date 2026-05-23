@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 //奖励系统
@@ -12,6 +13,8 @@ public class AwardSystem : MonoBehaviour
     private List<PerkDataSO> allPerksDataSO;   //所有遗物数据
 
     [SerializeField] private AwardUI awardUI;                   //引用奖励界面UI
+    [SerializeField] private CardAwarPanelUI cardAwarPanelUI;   //引用卡牌奖励UI
+    [SerializeField] private TMP_Text skipAwardButtonText;       //引用跳过按钮的文本UI，方便修改
     [SerializeField] private Sprite coinAwardSprite;            //金币奖励图示
     [SerializeField] private Sprite cardAwardSprite;            //卡片奖励图示
     [SerializeField] private Sprite perkAwardSprite;            //遗物奖励图示
@@ -21,30 +24,55 @@ public class AwardSystem : MonoBehaviour
     public PerkAward CurrentPerkAward { get; private set; }
 
     private bool isAwardActive = true;
-
+    //待销毁的AwardView
+    public AwardView WaitDestroyAwardView {  get; private set; }
+    public void SetUpWaitDestroyAwardView(AwardView awardView)
+    {
+        WaitDestroyAwardView = awardView;
+    }
+    public void DestroyWaitDestroyAwardView()
+    {
+        if (WaitDestroyAwardView != null)
+            Destroy(WaitDestroyAwardView.gameObject);
+    }
 
     public void AwardShow()
     {
+        ChangeButtonTextToSkipAward();
         awardUI.Show();
     }
 
     public void AwardHide()
-    {
-        awardUI.Hide();
+    {        
+        awardUI.Hide();        
     }
-    public void ToggleAward()
+    
+    //显示卡牌奖励界面
+    public void CardAwardPanelUIShow(List<Card> cards)
     {
-        isAwardActive = !isAwardActive;
-        SetAwardActive(isAwardActive);
+        cardAwarPanelUI.Show(cards);
     }
-    public void SetAwardActive(bool active)
+    //隐藏卡牌奖励界面
+    public void CardAwardPanelUIHide()
     {
-        if(awardUI != null)
+        cardAwarPanelUI.Hide();
+    }
+    //当奖励全被拿走时，将SkipButtonText设置为继续前进
+    public void ChangeButtonTextToAdvance(int newCount)
+    {
+        if( newCount == 0)
         {
-            awardUI.gameObject.SetActive(active);
-        }
+            skipAwardButtonText.text = "继续前进";
+        }        
     }
-
+    public int GetAwardContentChildCount()
+    {
+        return awardUI.AwardComtent.childCount;
+    }
+    public void ChangeButtonTextToSkipAward()
+    {
+        skipAwardButtonText.text = "跳过奖励";
+    }
 
 
     private void Awake()
@@ -56,10 +84,10 @@ public class AwardSystem : MonoBehaviour
         Instance = this;
 
         allCardsDataSO = AllDataSystem.Instance.AllCardsDataSO;
-        allPerksDataSO = AllDataSystem.Instance.AllPerksDataSO;
-        CurrentCoinAward = GenerateCoinAward();
-        CurrentCardAward = GenerateCardAward();
-        CurrentPerkAward = GeneratePerkAward();
+        allPerksDataSO = AllDataSystem.Instance.PerkPoolDataSO.PerkPool;
+        //CurrentCoinAward = GenerateCoinAward();
+        //CurrentCardAward = GenerateCardAward();
+        //CurrentPerkAward = GeneratePerkAward();
     }
 
     private void OnEnable()
@@ -122,9 +150,16 @@ public class AwardSystem : MonoBehaviour
     private CardAward GenerateCardAward()
     {
         CardAward cardAward = new CardAward();
-        CardDataSO randomCardDataSO = allCardsDataSO[Random.Range(0, allCardsDataSO.Count)];
-        Card card = new Card(randomCardDataSO);
-        cardAward.Setup(card, "将一张卡牌加入你的牌组中", AwardType.GetCard, cardAwardSprite);
+        List<Card> cards = new List<Card>();
+        for(int i=0; i<3; i++)
+        {
+            Card card = CardSystem.Instance.GenerateCard();
+            cards.Add(card);
+        }
+        
+        //CardDataSO randomCardDataSO = allCardsDataSO[Random.Range(0, allCardsDataSO.Count)];
+        //Card card = new Card(randomCardDataSO);
+        cardAward.Setup(cards, "将一张卡牌加入你的牌组中", AwardType.GetCard, cardAwardSprite);
         return cardAward;
     }
     private PerkAward GeneratePerkAward()
@@ -132,7 +167,7 @@ public class AwardSystem : MonoBehaviour
         PerkAward perkAward = new PerkAward();
         PerkDataSO randomPerkDataSO = allPerksDataSO[Random.Range(0, allPerksDataSO.Count)];
         Perk perk = new Perk(randomPerkDataSO);
-        perkAward.Setup(perk, perk.ToString(), AwardType.GetPerk, perkAwardSprite);
+        perkAward.Setup(perk, perk.Title, AwardType.GetPerk, perkAwardSprite);
         return perkAward;
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine.Rendering;
 
 public class CardView : MonoBehaviour
 {
-    //卡牌基本数据，卡排名，描述，消耗，精灵渲染器，包裹器
+    //卡牌基本数据，卡牌名，描述，消耗，精灵渲染器，包裹器
     [SerializeField] private TMP_Text title;
-    [SerializeField] private TMP_Text description
-        ;
+    [SerializeField] private TMP_Text description;
+    [SerializeField] private TMP_Text CardTypeText;
     [SerializeField] private TMP_Text mana;
 
     [SerializeField] private SpriteRenderer imageSR;
@@ -29,8 +29,25 @@ public class CardView : MonoBehaviour
         description.text = card.Description;
         mana.text = card.Mana.ToString();
         imageSR.sprite = card.Image;
+        CardTypeText.text = CardSystem.GetChinceseTypeText(card.CardType);
         Card = card;
     }
+    ////根据卡牌类型获得中文版文字
+    //public static string GetChinceseTypeText(CardType cardType)
+    //{
+    //    switch (cardType)
+    //    {
+    //        case CardType.Attack:
+    //            return "攻击";
+    //        case CardType.Skill:
+    //            return "技能";
+    //        case CardType.Power:
+    //            return "能力";
+    //        default:
+    //            break;
+    //    }
+    //    return "";
+    //}
 
     private void OnMouseEnter()
     {

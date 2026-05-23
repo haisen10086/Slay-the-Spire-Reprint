@@ -38,5 +38,12 @@ public class PerkSystem : MonoBehaviour
             Instance = this;
         }
     }
+    //Ëæ»úÉú³ÉPerk
+    public Perk GeneratePerk()
+    {
+        int rand = Random.Range(0, AllDataSystem.Instance.PerkPoolDataSO.PerkPool.Count);
+        Perk perk = new(AllDataSystem.Instance.PerkPoolDataSO.PerkPool[rand]);
+        return perk;
+    }
 
 }

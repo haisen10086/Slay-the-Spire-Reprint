@@ -35,22 +35,55 @@ public class MapNodeView : MonoBehaviour
     private IEnumerator ExpandAndEnterRoom()
     {
         yield return StartCoroutine(ExpandImage());
+        //让地图关闭，这里可添加动画
+        MapController.Instance.ToggleMap();
+        //让奖励和休息还有商人关闭
+        AwardSystem.Instance.AwardHide();
+        RestSystem.Instance.RestHide();
+        MerchantSystem.Instance.MerchantUIHide();
 
 
         if (mapNode != null)
         {
             if (mapNode.EncounterDataSO == null) Debug.Log("当前节点战斗数据缺失");
             MatchSetupSystem.Instance.SetupRoomData(mapNode.EncounterDataSO, mapNode.Type);
-            if (mapNode.Type == RoomType.Monster || mapNode.Type == RoomType.Elite || mapNode.Type == RoomType.Boss)
-            {
-                EnterRoomGA enterRoomGA = new();
-                ActionSystem.Instance.Perform(enterRoomGA);
-            }
 
-            //让地图关闭，这里可添加动画
-            MapController.Instance.ToggleMap();
-            //让奖励关闭
-            AwardSystem.Instance.AwardHide();
+            switch (mapNode.Type)
+            {
+                case RoomType.Unknown:
+                    break;
+                case RoomType.Monster:                   
+                case RoomType.Elite:                    
+                case RoomType.Boss:
+                    EnterRoomGA enterRoomGA = new();
+                    ActionSystem.Instance.Perform(enterRoomGA);
+                    break;
+                case RoomType.Rest:
+                    //打开休息UI
+                    Debug.Log("打开休息场景");
+                    RestSystem.Instance.RestShow();
+                    break;
+                case RoomType.Merchant:
+                    MerchantSystem.Instance.MerchantUIShow();
+                    break;
+                case RoomType.Treasure:
+                    break;
+                case RoomType.Mystery:
+                    break;
+                default:
+                    break;
+            }
+            //if (mapNode.Type == RoomType.Monster || mapNode.Type == RoomType.Elite || mapNode.Type == RoomType.Boss)
+            //{
+            //    EnterRoomGA enterRoomGA = new();
+            //    ActionSystem.Instance.Perform(enterRoomGA);
+            //}
+
+            ////让地图关闭，这里可添加动画
+            //MapController.Instance.ToggleMap();
+            ////让奖励和休息关闭
+            //AwardSystem.Instance.AwardHide();
+            //RestSystem.Instance.RestHide();
             //同时更新AwardSystem的默认奖励
             //注意这里要等节点数据加载完全
             AwardSystem.Instance.UpdateAwardsByRoomType(MatchSetupSystem.Instance.CurrentRoomType);
@@ -80,6 +113,5 @@ public class MapNodeView : MonoBehaviour
         }
 
         ClickedImage.fillAmount = 1f;
-        Debug.Log("ClickedImage.fillAmount=" + ClickedImage.fillAmount);
     }
 }

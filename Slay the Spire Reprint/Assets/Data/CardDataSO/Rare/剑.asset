@@ -10,27 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
-  m_Name: Draw
+  m_Name: "\u5251"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
-  <Description>k__BackingField: Draw
-  <Mana>k__BackingField: 0
-  <Image>k__BackingField: {fileID: 21300000, guid: 871636b31e7850c478f2b485eaf22dc9, type: 3}
+  <Description>k__BackingField: "\u968F\u673A\u7ED9\u4E00\u540D\u654C\u4EBA\u9020\u621010\u70B9\u4F24\u5BB3"
+  <Mana>k__BackingField: 1
+  <Image>k__BackingField: {fileID: 21300000, guid: 43cbbe1fe6be84c43af65b2be2a67e49, type: 3}
   <ManualTargetEffect>k__BackingField:
     rid: -2
   <OtherEffects>k__BackingField:
   - <TargetMode>k__BackingField:
-      rid: 9102446944308691026
+      rid: 9102446944308691028
     <Effect>k__BackingField:
-      rid: 9102446944308691027
+      rid: 9102446944308691025
+  <CardType>k__BackingField: 0
+  <CardrarityType>k__BackingField: 2
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 9102446944308691026
-      type: {class: NoTM, ns: , asm: Assembly-CSharp}
-      data: 
-    - rid: 9102446944308691027
-      type: {class: DrawCardEffect, ns: , asm: Assembly-CSharp}
+    - rid: 9102446944308691025
+      type: {class: DealDamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        drawAmount: 2
+        damageAmount: 10
+    - rid: 9102446944308691028
+      type: {class: RandomEnemyTM, ns: , asm: Assembly-CSharp}
+      data: 

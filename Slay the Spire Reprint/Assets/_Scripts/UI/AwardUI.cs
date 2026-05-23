@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class AwardUI : MonoBehaviour
 {
     [SerializeField] private AwardView awardViewPrefab;
-    [SerializeField] private Transform AwardComtent;
+    [field: SerializeField] public Transform AwardComtent {  get; private set; }
 
     private void Start()
     {

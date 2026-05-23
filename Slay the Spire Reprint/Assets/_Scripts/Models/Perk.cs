@@ -9,6 +9,7 @@ public class Perk
     private readonly PerkDataSO data;
     private readonly PerkCondition condition;
     private readonly AutoTargetEffect effect;
+    public string Title { get;private set; }
 
     private PerkUI ownerPerkUI;         //存储这个Perk实例对应的PerkUI实例
 
@@ -23,6 +24,7 @@ public class Perk
         data = perkDataSO; 
         condition = data.PerkCondition;
         effect = data.AutoTargetEffect;
+        Title = data.name;
     }
 
     public void OnAdd()
