@@ -12,6 +12,9 @@ public class CombatantView : MonoBehaviour
 
     [SerializeField] private StatusEffectsUI statusEffectsUI;    //存放状态栏UI
 
+    public List<BuffBase> buffs = new();
+    [SerializeField] private BuffsUI buffsUI;       //存放buff栏UI
+
     public int MaxHealth { get; private set; }     //最大生命值
     public int CurrentHealth { get; private set; }  //当前生命值
 
@@ -99,4 +102,42 @@ public class CombatantView : MonoBehaviour
         if(statusEffects.ContainsKey(statusEffectType)) return statusEffects[statusEffectType];
         else return 0;
     }
+
+
+
+
+    //添加buff
+    public void AddBuff(BuffBase buff)
+    {
+        // 查找是否已有同类 Buff
+        BuffBase existing = buffs.Find(b => b.BuffId == buff.BuffId);
+       
+        if (existing != null)
+        {
+            existing.Amount += buff.Amount;
+        }
+        else
+        {
+            existing = buff.DeepClone();
+            buffs.Add(existing);
+            existing.OnApply(this);
+        }
+
+        RefreshBuffUI(existing);
+    }
+    //刷新UI
+    public void RefreshBuffUI(BuffBase buff)
+    {
+        buffsUI.UpdateBuffUI(buff, buff.Amount);
+    }
+
+    //移除buff
+    public void RemoveBuff(BuffBase buff)
+    {
+        buff.OnRemove();
+        buffs.Remove(buff);
+
+        RefreshBuffUI(buff);
+    }
+   
 }

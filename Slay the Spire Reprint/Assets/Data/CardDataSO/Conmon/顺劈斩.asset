@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
-  m_Name: "\u9632\u5FA1"
+  m_Name: "\u987A\u5288\u65A9"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
-  Description: 
+  Description: "\u5BF9\u6240\u6709\u654C\u4EBA\u9020\u6210 <color=#00FF00>{damage}</color>
+    \u70B9\u4F24\u5BB3\u3002"
   <Mana>k__BackingField: 1
-  <Image>k__BackingField: {fileID: 21300000, guid: c29f8fa772ccfca4fb790ccb8ae60e25, type: 3}
+  <Image>k__BackingField: {fileID: 0}
   <ManualTargetEffect>k__BackingField:
     rid: -2
   <OtherEffects>k__BackingField:
   - <TargetMode>k__BackingField:
-      rid: 9102447108112515147
+      rid: 6520389293400916053
     <Effect>k__BackingField:
-      rid: 9102447108112515148
-  <CardType>k__BackingField: 1
+      rid: 6520389293400916054
+  <CardType>k__BackingField: 0
   <CardrarityType>k__BackingField: 0
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 9102447108112515147
-      type: {class: HeroTM, ns: , asm: Assembly-CSharp}
+    - rid: 6520389293400916053
+      type: {class: AllEnemiesTM, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 9102447108112515148
-      type: {class: AddStatusEffectEffect, ns: , asm: Assembly-CSharp}
+    - rid: 6520389293400916054
+      type: {class: DealDamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        statusEffectType: 0
-        stackCount: 5
+        <baseDamage>k__BackingField: 7

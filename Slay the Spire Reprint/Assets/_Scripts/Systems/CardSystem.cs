@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CardSystem : MonoBehaviour
 {
-    [SerializeField] private HandView handView; //引用手牌
+    [field : SerializeField] public HandView handView { get; private set; } //引用手牌
     [SerializeField] private Transform drawPilePoint; //引用手牌
     [SerializeField] private Transform discardPilePoint; //引用手牌
 

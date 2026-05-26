@@ -31,4 +31,9 @@ public class CardViewHoverSystem : MonoBehaviour
     {
         cardViewHover.gameObject.SetActive(false);
     }
+
+    public void ReSetCardViewHoverDescription(string description)
+    {
+        cardViewHover.SetDescription(description);
+    }
 }

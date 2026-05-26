@@ -43,5 +43,16 @@ public class manualTargetSystem : MonoBehaviour
         }
         return null;
     }
+    //检测是否有目标
+    public EnemyView TestingTargeting(Vector3 endPotion)
+    {
+        if (Physics.Raycast(endPotion, Vector3.forward, out RaycastHit hit, 10f, targetLayerMask)
+            && hit.collider != null
+            && hit.transform.TryGetComponent(out EnemyView enemyView))
+        {
+            return enemyView;
+        }
+        return null;
+    }
 
 }

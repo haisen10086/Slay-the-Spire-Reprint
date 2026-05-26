@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 1033272669267712978}
   - component: {fileID: 7166590464255948210}
   - component: {fileID: 3721203988517149663}
+  - component: {fileID: -597321819614380114}
   m_Layer: 5
   m_Name: StatusEffectUI
   m_TagString: Untagged
@@ -226,5 +227,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193178703f8f05744b7d96548de8428e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatusEffectUI
+  image: {fileID: 7166590464255948210}
+  StackCountText: {fileID: 3359220330969330612}
+--- !u!114 &-597321819614380114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757849212673657238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1354eb064dc305a49827e7bde9ab8cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffUI
   image: {fileID: 7166590464255948210}
   StackCountText: {fileID: 3359220330969330612}

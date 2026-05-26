@@ -15,7 +15,11 @@ MonoBehaviour:
   <CommonCardPool>k__BackingField:
   - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
   - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
+  - {fileID: 11400000, guid: 761f143d96295d24b9c3afe8650433b6, type: 2}
+  - {fileID: 11400000, guid: 7914e70e0c2e7c84da1bd07c33283215, type: 2}
   <UncommonCardPool>k__BackingField:
   - {fileID: 11400000, guid: 6c692703b836ec648bd2ce0edc517ecd, type: 2}
+  - {fileID: 11400000, guid: 0bd0820c607747840b618ec16836258d, type: 2}
   <RareCardPool>k__BackingField:
   - {fileID: 11400000, guid: 884f5c98b2ac82540b6e21e11b095d82, type: 2}

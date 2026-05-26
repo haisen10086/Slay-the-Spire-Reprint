@@ -91,7 +91,10 @@ public class EnemySystem : MonoBehaviour
         yield return tween.WaitForCompletion();
         attacker.transform.DOMoveX(attacker.transform.position.x + 1f, 0.25f);
         //造成伤害(添加造成伤害动作进反应里，反应列表会执行这个造成伤害动作)
-        DealDamageGA dealDamageGA = new(attacker.AttckPower, new() { HeroSystem.Instance.HeroView },attackHeroGA.Caster);
+        List<DamageInfo> damageInfoList = new List<DamageInfo>() 
+            { new DamageInfo(attacker, HeroSystem.Instance.HeroView, attacker.AttckPower) };
+        DealDamageGA dealDamageGA = new(damageInfoList);
+        //DealDamageGA dealDamageGA = new(attacker.AttckPower, new() { HeroSystem.Instance.HeroView },attackHeroGA.Caster);
         ActionSystem.Instance.AddReaction(dealDamageGA);
 
 
@@ -110,4 +113,5 @@ public class EnemySystem : MonoBehaviour
         }
 
     }
+
 }

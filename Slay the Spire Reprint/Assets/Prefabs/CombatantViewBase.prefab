@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3598297611631935199}
   - component: {fileID: 6716733198914511791}
+  - component: {fileID: 5899103278724077470}
   - component: {fileID: 2202756801228077109}
   - component: {fileID: 4087033018826050798}
   - component: {fileID: 8587246729151314096}
@@ -301,6 +302,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5664788735075422673}
   m_CullTransparentMesh: 1
+--- !u!114 &5899103278724077470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664788735075422673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567e7fe8ad6b8db4d85d089be179388b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffsUI
+  BuffUIPrefab: {fileID: -597321819614380114, guid: acf608037ba760b4385e61b4d602f8be, type: 3}
 --- !u!114 &2202756801228077109
 MonoBehaviour:
   m_ObjectHideFlags: 0

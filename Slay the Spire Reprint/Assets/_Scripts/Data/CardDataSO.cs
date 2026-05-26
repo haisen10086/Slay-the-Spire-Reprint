@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/CardDataSO")]
 public class CardDataSO : ScriptableObject
 {
-    [field : SerializeField] public string Description {  get; private set; }
+    [TextArea]
+    public string Description;
     [field : SerializeField] public int Mana {  get; private set; }
     [field : SerializeField] public Sprite Image { get; private set; }
     [field : SerializeReference, SR] public Effect ManualTargetEffect { get; private set; } = null;
