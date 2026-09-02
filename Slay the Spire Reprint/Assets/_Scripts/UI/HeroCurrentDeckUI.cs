@@ -42,7 +42,8 @@ public class HeroCurrentDeckUI : MonoBehaviour
     public void AddCardUI(Card card)
     {
         CardItemNoGoldView cardItemNoGoldView = Instantiate(CardItemNoGoldPrefab, cardUIContainer);
-        cardItemNoGoldView.Setup(card);
+        cardItemNoGoldView.Setup(card, transform);
+        cardItemNoGoldView.BuyButton.onClick.RemoveAllListeners();
 
 
         //每次添加CardUI都重新计算cardUIContainer大小

@@ -37,12 +37,15 @@ public class BuffSystem : MonoBehaviour
             Debug.Log("对"+ target.GetType()+ "addBuffGA");
             yield return null;//添加一些通用的添加状态动画
 
+
             //添加buff时,当且仅当目标为英雄时，刷新一下所有卡牌的伤害文本
-            if (target != HeroSystem.Instance.HeroView)
+            if (target == HeroSystem.Instance.HeroView)
             {
                 foreach(var cardView in CardSystem.Instance.handView.cards)
                 {
                     cardView.ReplaceDamageDescription();
+                    cardView.ReplaceBlockDescription();
+                    cardView.ReplaceMagicDescription();                
                 }
             }
         }
@@ -65,11 +68,12 @@ public class BuffSystem : MonoBehaviour
             }
         }
         //遍历英雄buff
-        foreach (BuffBase buff in HeroSystem.Instance.HeroView.buffs)
+        for(int i=HeroSystem.Instance.HeroView.buffs.Count-1; i>=0;i--)
         {
-            buff.AtTurnEnd();
+            HeroSystem.Instance.HeroView.buffs[i].AtTurnEnd();
             yield return null;//可添加动画
         }
+
 
     }
 }

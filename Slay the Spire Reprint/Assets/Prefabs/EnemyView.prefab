@@ -52,6 +52,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2317097011999506855}
   statusEffectsUI: {fileID: 4502104635327819755}
   buffsUI: {fileID: 8157884652521783360}
+  hpBarUI: {fileID: 8963817911963784099}
+  defenceBarUI: {fileID: 0}
   attackText: {fileID: 5152847849925759100}
   nameText: {fileID: 8860478899830935790}
 --- !u!65 &318304111233004774
@@ -489,6 +491,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 666688187931380717, guid: 30a0092b572910e4a98a3be60965af9a, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 4525273139277410098}
     - target: {fileID: 6011516365788443851, guid: 30a0092b572910e4a98a3be60965af9a, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -509,6 +515,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8763202107499875247, guid: 30a0092b572910e4a98a3be60965af9a, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 4525273139277410098}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -557,3 +567,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567e7fe8ad6b8db4d85d089be179388b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuffsUI
+--- !u!114 &8963817911963784099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6669429820150924413, guid: 30a0092b572910e4a98a3be60965af9a, type: 3}
+  m_PrefabInstance: {fileID: 2372117119972988894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c514ebb5f42afcd4781fe8c0e59e8d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HPBarUI

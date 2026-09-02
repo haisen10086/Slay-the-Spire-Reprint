@@ -14,14 +14,18 @@ public class CombatantView : MonoBehaviour
 
     public List<BuffBase> buffs = new();
     [SerializeField] private BuffsUI buffsUI;       //存放buff栏UI
+    [SerializeField] private HPBarUI hpBarUI;       //存放血条栏UI
+    [SerializeField] private DefenceBarUI defenceBarUI; //存放防御栏UI
 
     public int MaxHealth { get; private set; }     //最大生命值
     public int CurrentHealth { get; private set; }  //当前生命值
+    public int CurrentDefence { get; private set; } = 0;    //当前防御值
 
     private Dictionary<StatusEffectType, int> statusEffects = new();
 
 
     public event EventHandler OnHealthChange;
+    public event EventHandler OnDefenceChange;
 
     //基础属性设置方法
     protected void SetupBase(int health, Sprite image)
@@ -35,27 +39,42 @@ public class CombatantView : MonoBehaviour
     {
         healthText.text = "HP:" + CurrentHealth.ToString() + "/" + MaxHealth.ToString();
     }
+    //增加防御值
+    public void AddDefence(int defence)
+    {
+        CurrentDefence += defence;
+        Debug.Log("增加防御值后，当前防御值为："+ CurrentDefence);
+        if (OnDefenceChange == null) Debug.Log("OnDefenceChange没有订阅");
+        OnDefenceChange?.Invoke(this, EventArgs.Empty);
+    }
     //减少当前生命值
     public void Damage(int damageAmount)
     {
         int remainingDamage = damageAmount;
-        int currentArmor = GetStatusEffectStacks(StatusEffectType.ARMOR);
+        int currentArmor = CurrentDefence;
         if(currentArmor > 0)
         {
             if(currentArmor >= damageAmount)
             {
-                RemoveStatusEffects(StatusEffectType.ARMOR, remainingDamage);
+                currentArmor -= remainingDamage;
                 remainingDamage = 0;
             }
             else if(currentArmor < damageAmount)
             {
-                RemoveStatusEffects(StatusEffectType.ARMOR, currentArmor);
+                currentArmor = 0;
                 remainingDamage -= currentArmor;
             }
         }
+        CurrentDefence = currentArmor;
+        OnDefenceChange?.Invoke(this, EventArgs.Empty);
+
         if(remainingDamage > 0)
         {
             CurrentHealth -= remainingDamage;
+            CombatFeedbackSystem.Instance.PlayHitStop(0.1f);
+            CameraShake.Instance.Shake();
+
+
             OnHealthChange?.Invoke(this, EventArgs.Empty);      //传递生命值修改事件
             if(CurrentHealth < 0)
             {
@@ -106,15 +125,16 @@ public class CombatantView : MonoBehaviour
 
 
 
-    //添加buff
+    //添加buff,无论该buff存不存在，都调用一次Buff.OnApply()
     public void AddBuff(BuffBase buff)
     {
         // 查找是否已有同类 Buff
         BuffBase existing = buffs.Find(b => b.BuffId == buff.BuffId);
-       
+        
         if (existing != null)
         {
             existing.Amount += buff.Amount;
+            existing.OnApply(this);
         }
         else
         {
@@ -138,6 +158,13 @@ public class CombatantView : MonoBehaviour
         buffs.Remove(buff);
 
         RefreshBuffUI(buff);
+    }
+
+
+    //获得hpUI
+    public HPBarUI GetHPBarUI()
+    {
+        return hpBarUI;
     }
    
 }

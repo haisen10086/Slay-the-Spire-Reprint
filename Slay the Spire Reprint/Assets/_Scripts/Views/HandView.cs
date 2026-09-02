@@ -34,23 +34,72 @@ public class HandView : MonoBehaviour
         return cards.Where(cardView => cardView.Card == card).FirstOrDefault();
     }
     //更新卡片位置，包含计算位置算法
+    //public IEnumerator UpdateCardPositions(float duration)
+    //{
+    //    if (cards.Count == 0) yield break;
+    //    float cardSpacing = 1.5f / 10f;
+    //    float firstCardposition = 0.5f - (cards.Count - 1) * cardSpacing / 2;
+    //    Spline spline = splineContainer.Spline;
+    //    for (int i = 0; i < cards.Count; i++)
+    //    {
+    //        float p = firstCardposition + i * cardSpacing;
+    //        Vector3 splinePosition = spline.EvaluatePosition(p);
+    //        Vector3 forward = spline.EvaluateTangent(p);
+    //        Vector3 up = spline.EvaluateUpVector(p);
+    //        Quaternion rotation = Quaternion.LookRotation(-up, Vector3.Cross(-up, forward).normalized);
+    //        cards[i].transform.DOMove(splinePosition + transform.clickPosition + 0.01f * i * Vector3.back, duration);
+    //        cards[i].transform.DORotate(rotation.eulerAngles, duration);
+
+    //    }
+    //    yield return new WaitForSeconds(duration);
+    //}
     public IEnumerator UpdateCardPositions(float duration)
     {
         if (cards.Count == 0) yield break;
-        float cardSpacing = 1f / 10f;
-        float firstCardposition = 0.5f - (cards.Count - 1) * cardSpacing / 2;
+
         Spline spline = splineContainer.Spline;
+
+        // 手牌允许占据的总宽度
+        float totalWidth = 0.8f;
+
+        // 自动计算间距
+        float cardSpacing = totalWidth / Mathf.Max(cards.Count - 1, 1);
+
+        // 限制最大最小间距
+        cardSpacing = Mathf.Clamp(cardSpacing, 0.06f, 0.12f);
+
+        // 第一张卡位置
+        float firstPos = 0.5f - (cards.Count - 1) * cardSpacing * 0.5f;
+
         for (int i = 0; i < cards.Count; i++)
         {
-            float p = firstCardposition + i * cardSpacing;
-            Vector3 splinePosition = spline.EvaluatePosition(p);
-            Vector3 forward = spline.EvaluateTangent(p);
-            Vector3 up = spline.EvaluateUpVector(p);
-            Quaternion rotation = Quaternion.LookRotation(-up, Vector3.Cross(-up, forward).normalized);
-            cards[i].transform.DOMove(splinePosition + transform.position + 0.01f * i * Vector3.back, duration);
-            cards[i].transform.DORotate(rotation.eulerAngles, duration);
+            float p = firstPos + i * cardSpacing;
 
+            Vector3 splinePosition = spline.EvaluatePosition(p);
+
+            Vector3 forward = spline.EvaluateTangent(p);
+
+            Vector3 up = spline.EvaluateUpVector(p);
+
+            Quaternion rotation =
+                Quaternion.LookRotation(
+                    -up,
+                    Vector3.Cross(-up, forward).normalized
+                );
+
+            cards[i].transform.DOMove(
+                splinePosition + transform.position + 0.01f * i * Vector3.back,
+                duration
+            );
+            cards[i].hoverStartPosition = splinePosition + transform.position + 0.01f * i * Vector3.back;
+
+            cards[i].transform.DORotate(
+                rotation.eulerAngles,
+                duration
+            );
+            cards[i].hoverStartRotation = rotation;
         }
+
         yield return new WaitForSeconds(duration);
     }
 }

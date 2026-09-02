@@ -1,7 +1,6 @@
 public class StrengthBuff : BuffBase
 {
 
-
     public override void ModifyDamageGive(DamageInfo info)
     {
         info.currentDamage += Amount;

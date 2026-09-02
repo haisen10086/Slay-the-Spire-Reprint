@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
   m_Name: "\u6253\u51FB"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
-  Description: "\u9020\u6210 <color=#00FF00>{damage}</color> \u70B9\u4F24\u5BB3\u3002"
+  Description: "\u9020\u6210<color=#00FF00>{damage}</color>\u70B9\u4F24\u5BB3\u3002"
   <Mana>k__BackingField: 1
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 1de1e34aaf0cb4443a18d152bc92768d, type: 3}
   <ManualTargetEffect>k__BackingField:
     rid: 6520389293400916049
   <OtherEffects>k__BackingField: []
   <CardType>k__BackingField: 0
   <CardrarityType>k__BackingField: 0
+  baseDamage: 6
+  baseBlock: 0
+  baseMagic: 0
+  upgradeDamage: 3
+  upgradeBlock: 0
+  upgradeMagic: 0
+  upgradeMana: 0
+  upgradeName: +
+  CanBeUpgradeInfinitely: 0
   references:
     version: 2
     RefIds:

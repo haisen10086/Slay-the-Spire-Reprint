@@ -25,6 +25,15 @@ MonoBehaviour:
       rid: 6520389293400916054
   <CardType>k__BackingField: 0
   <CardrarityType>k__BackingField: 0
+  baseDamage: 7
+  baseBlock: 0
+  baseMagic: 0
+  upgradeDamage: 0
+  upgradeBlock: 0
+  upgradeMagic: 0
+  upgradeMana: 0
+  upgradeName: +
+  CanBeUpgradeInfinitely: 0
   references:
     version: 2
     RefIds:

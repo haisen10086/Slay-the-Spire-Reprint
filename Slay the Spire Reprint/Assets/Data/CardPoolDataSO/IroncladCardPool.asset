@@ -14,12 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardPoolDataSO
   <CommonCardPool>k__BackingField:
   - {fileID: 11400000, guid: d64fabb23f418b447a89f745552d5bfe, type: 2}
-  - {fileID: 11400000, guid: c7ff32d46bcc44b4aa530dcc13ee5520, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
   - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
   - {fileID: 11400000, guid: 761f143d96295d24b9c3afe8650433b6, type: 2}
   - {fileID: 11400000, guid: 7914e70e0c2e7c84da1bd07c33283215, type: 2}
+  - {fileID: 11400000, guid: 90683b00c84f77641a76d731119787f2, type: 2}
+  - {fileID: 11400000, guid: b2f5b52e92269974a8d045131144dc1d, type: 2}
+  - {fileID: 11400000, guid: 261fdd349fb8de740847741342c6f643, type: 2}
+  - {fileID: 11400000, guid: f4021f9ac51a09444b39471800d9bd63, type: 2}
   <UncommonCardPool>k__BackingField:
   - {fileID: 11400000, guid: 6c692703b836ec648bd2ce0edc517ecd, type: 2}
   - {fileID: 11400000, guid: 0bd0820c607747840b618ec16836258d, type: 2}
+  - {fileID: 11400000, guid: 8625506af2ed3364f9d0c9ae398c5a85, type: 2}
+  - {fileID: 11400000, guid: a8f064802e422f14b96bde572c4cb60e, type: 2}
+  - {fileID: 11400000, guid: 58bb32cd6f854bf49ade7b4f252efba1, type: 2}
+  - {fileID: 11400000, guid: 8ca4f2a411baba3488f1a0d7b5f349b9, type: 2}
   <RareCardPool>k__BackingField:
-  - {fileID: 11400000, guid: 884f5c98b2ac82540b6e21e11b095d82, type: 2}
+  - {fileID: 11400000, guid: edff670bba1f2a94da7db7378045b3c9, type: 2}
+  - {fileID: 11400000, guid: 283a9497fe82cbd46aaef7eb1e39a2de, type: 2}

@@ -53,5 +53,10 @@ public class HPBarUI : MonoBehaviour
         pink.fillAmount = targetFill;
     }
 
+    public float GetRedFillAmount()
+    {
+        return red.fillAmount;
+    }
+
     //
 }

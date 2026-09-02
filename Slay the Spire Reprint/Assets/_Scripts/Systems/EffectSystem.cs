@@ -17,7 +17,11 @@ public class EffectSystem : MonoBehaviour
     //执行效果执行函数，作用为将效果对应的动作添加到反应里,作为反应的反应存在，形成一条动作链
     public IEnumerator PerformEffectPerformer(PerformEffectGA performEffectGA)
     {
-        GameAction effectAction = performEffectGA.Effect.GetGameAction(performEffectGA.Targets, HeroSystem.Instance.HeroView);
+        GameAction effectAction = performEffectGA.Effect.GetGameAction(performEffectGA.Targets, HeroSystem.Instance.HeroView, performEffectGA.sourceCard);
+        if(effectAction is AddDefenceGA)
+        {
+            Debug.Log("将AddDefenceGA添加进反应里");
+        }
         ActionSystem.Instance.AddReaction(effectAction);
         yield return null;
     }

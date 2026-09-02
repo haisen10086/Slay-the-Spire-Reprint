@@ -17,6 +17,12 @@ MonoBehaviour:
   <Deck>k__BackingField:
   - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
   - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
-  - {fileID: 11400000, guid: 7914e70e0c2e7c84da1bd07c33283215, type: 2}
+  - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
+  - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
+  - {fileID: 11400000, guid: 4885afcb9e487d1448a1d68708b830c5, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
+  - {fileID: 11400000, guid: 6a9acafb5bcac6c43a71d3946b2d5ca0, type: 2}
   - {fileID: 11400000, guid: 761f143d96295d24b9c3afe8650433b6, type: 2}
-  - {fileID: 11400000, guid: 0bd0820c607747840b618ec16836258d, type: 2}

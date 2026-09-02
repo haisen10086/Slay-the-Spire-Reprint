@@ -1,5 +1,6 @@
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class CardItemUI : ItemUI, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private TMP_Text CardTypeText;
     [SerializeField] private TMP_Text mana;
     [SerializeField] private Image image;
+
     [Header("Button")]
     [SerializeField] private Button buyButton;
     public Card Card { get; private set; }
@@ -43,6 +45,7 @@ public class CardItemUI : ItemUI, IPointerEnterHandler, IPointerExitHandler
             {
                 SetMaterial(hoverMaterial);
             }
+            FingerSelectUI.Instance.MoveToSelectItem(transform.position);
         }
 
     }
@@ -55,6 +58,7 @@ public class CardItemUI : ItemUI, IPointerEnterHandler, IPointerExitHandler
             {
                 SetMaterial(normalMaterial);
             }
+            FingerSelectUI.Instance.MoveToSelectItem(FingerSelectUI.Instance.StartPosition);
         }
 
     }
@@ -76,13 +80,17 @@ public class CardItemUI : ItemUI, IPointerEnterHandler, IPointerExitHandler
 
     public void Setup(Card card, int price)
     {
+        this.Card = card;
         SetUpPeice(price);
         title.text = card.Title;
         description.text = card.Description;
+
+        ReplaceDamageDescription();
+        ReplaceMagicDescription();
+        ReplaceBlockDescription();
         mana.text = card.Mana.ToString();
         image.sprite = card.Image;
         CardTypeText.text = CardSystem.GetChinceseTypeText(card.CardType);
-        this.Card = card;
 
         // 注册按钮事件
         buyButton.onClick.RemoveAllListeners();
@@ -95,6 +103,61 @@ public class CardItemUI : ItemUI, IPointerEnterHandler, IPointerExitHandler
     {
         MerchantSystem.Instance.TryBuyItem(this);
     }
+    //伤害信息替换函数,将伤害信息的最终伤害替换伤害描述里的伤害文本
+    public string ReplaceDamageDescription(CombatantView target = null)
+    {
+        string finalDescription = description.text.Replace("{damage}", GetPreviewDamage(target).ToString());
+        this.description.text = finalDescription;
+        return finalDescription;
+    }
+    //防御信息替换函数,将文本里的防御值替换
+    public string ReplaceBlockDescription()
+    {
+        string finalDescription = description.text.Replace("{block}", ColorUtil.ColorText(Card.BaseBlock.ToString(), "green"));
 
+        this.description.text = finalDescription;
+        return finalDescription;
+    }
+    //魔法数字信息替换函数,将文本里的魔法数字替换
+    public string ReplaceMagicDescription()
+    {
+        string finalDescription = description.text.Replace("{magic}", ColorUtil.ColorText(Card.BaseMagic.ToString(), "green"));
+
+        this.description.text = finalDescription;
+        return finalDescription;
+    }
+
+    //获得预览伤害,先查找手动目标伤害，
+    public int GetPreviewDamage(CombatantView target = null)
+    {
+        DamageInfo info = new DamageInfo()
+        {
+            attacker = HeroSystem.Instance.HeroView,
+            target = target,
+            baseDamage = Card.BaseDamage,
+            currentDamage = Card.BaseDamage,
+            sourceCard = this.Card
+        };
+        //if (Card.ManualTargetEffect != null && Card.ManualTargetEffect is DealDamageEffect dealDamageEffect)
+        //{
+        //    info.baseDamage = dealDamageEffect.baseDamage;
+        //    info.currentDamage = info.baseDamage;
+        //}
+        //else
+        //{
+        //    foreach(var autoTargetEffect in  Card.OtherEffects)
+        //    {
+        //        if(autoTargetEffect.Effect is DealDamageEffect dealDamageEffect1)
+        //        {
+        //            info.baseDamage = dealDamageEffect1.baseDamage;
+        //            info.currentDamage = info.baseDamage;
+        //        }
+        //    }
+        //}
+
+
+        int calculateDamage = DamageSystem.CalculateDamage(info);
+        return calculateDamage;
+    }
 
 }

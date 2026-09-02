@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d9991ee8c14b4994a377416c7db68, type: 3}
   m_Name: "\u75DB\u51FB"
   m_EditorClassIdentifier: Assembly-CSharp::CardDataSO
-  Description: "\u9020\u6210 2\u5C42\u6613\u4F24"
+  Description: "\u9020\u6210{magic}\u5C42\u6613\u4F24"
   <Mana>k__BackingField: 0
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: d8899f1c08f814b46920412fbd72c750, type: 3}
   <ManualTargetEffect>k__BackingField:
     rid: 6520389293400916050
   <OtherEffects>k__BackingField: []
   <CardType>k__BackingField: 0
   <CardrarityType>k__BackingField: 0
+  baseDamage: 0
+  baseBlock: 0
+  baseMagic: 2
+  upgradeDamage: 0
+  upgradeBlock: 0
+  upgradeMagic: 1
+  upgradeMana: 0
+  upgradeName: +
+  CanBeUpgradeInfinitely: 0
   references:
     version: 2
     RefIds:

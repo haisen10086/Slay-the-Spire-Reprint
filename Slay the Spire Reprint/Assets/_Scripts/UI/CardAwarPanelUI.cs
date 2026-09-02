@@ -40,7 +40,8 @@ public class CardAwarPanelUI : MonoBehaviour
         foreach(Card card in cardList)
         {
             CardItemNoGoldView cardItemNoGoldView = Instantiate(cardItemNoGoldViewPrefab,container);
-            cardItemNoGoldView.Setup(card);
+            cardItemNoGoldView.Setup(card, transform);
+            
         }        
     }
 

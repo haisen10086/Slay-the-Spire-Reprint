@@ -143,14 +143,14 @@ public class CardSystem : MonoBehaviour
 
         if(playCardGA.Card.ManualTargetEffect != null)
         {
-            PerformEffectGA performEffectGA = new(playCardGA.Card.ManualTargetEffect, new() { playCardGA.Manualtarget });
+            PerformEffectGA performEffectGA = new(playCardGA.Card.ManualTargetEffect, new() { playCardGA.Manualtarget }, playCardGA.Card);
             ActionSystem.Instance.AddReaction(performEffectGA); 
         }
         foreach(var effectWrapper in playCardGA.Card.OtherEffects)
         {
             List<CombatantView> targets = effectWrapper.TargetMode.GetTargets();
             //为每个效果创建执行效果的游戏动作
-            PerformEffectGA performEffectGA = new(effectWrapper.Effect, targets);
+            PerformEffectGA performEffectGA = new(effectWrapper.Effect, targets, playCardGA.Card);
             //打牌动作执行中的连锁反应，实现效果
             ActionSystem.Instance.AddReaction(performEffectGA);
         }

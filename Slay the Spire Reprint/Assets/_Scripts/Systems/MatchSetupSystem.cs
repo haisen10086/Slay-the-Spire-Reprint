@@ -13,7 +13,7 @@ public class MatchSetupSystem : MonoBehaviour
     public List<EnemyDataSO> enemyDataSO; //敌人数据列表
     public List<PerkDataSO> perkDataSOs;         //遗物数据
     public int Coin{ get; set; }                     //金币数据
-    public int Layer { get; set; }                //初始层数
+    public int Layer { get; set; } = 0;                //初始层数
     public RoomType CurrentRoomType = RoomType.Monster;   //当前房间类型
 
 
@@ -40,6 +40,7 @@ public class MatchSetupSystem : MonoBehaviour
         //ActionSystem.Instance.Perform(drawCardsGA);
 
         CurrentRoomType = RoomType.Monster;
+        Layer = 1;
 
 
     }
@@ -70,12 +71,17 @@ public class MatchSetupSystem : MonoBehaviour
         //EnemySystem.Instance.RemoveAllEnemyView();
         //CardSystem.Instance.ReMoveAllPileAddReaction();
 
+        //层数增加
+        Layer++;
+
         if (enemyDataSO == null) Debug.Log("当前敌人数据为空");
         else Debug.Log("当前敌人数据不为空");
         Debug.Log("敌人数据数量：" + enemyDataSO.Count);
         EnemySystem.Instance.Setup(enemyDataSO);
         CardSystem.Instance.SetUpClonedCard(HeroSystem.Instance.Deck);
 
+        RefillManaGA refillManaGA = new RefillManaGA();
+        ActionSystem.Instance.AddReaction(refillManaGA);
         DrawCardsGA drawCardsGA = new(5);
         ActionSystem.Instance.AddReaction(drawCardsGA);
         Debug.Log("进入房间后抽牌");

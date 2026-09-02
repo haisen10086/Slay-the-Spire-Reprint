@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 268132857639536736, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}
+      propertyPath: m_text
+      value: "\u9020\u6210<color=#00FF00>{damage}</color>\u70B9\u4F24\u5BB3\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 268132857639536736, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}
+      propertyPath: m_isRichText
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 694547368221359118, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -91,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 1216808442176898858, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}
       propertyPath: m_Name
       value: CardItemNoGold
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556732958661730111, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}
+      propertyPath: m_text
+      value: "\u9020\u6210 <color=#00FF00>{damage}</color> \u70B9\u4F24\u5BB3\u3002"
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5373637692531611597, guid: 368d9a3b76f27c74dae7aabc5c5397c2, type: 3}

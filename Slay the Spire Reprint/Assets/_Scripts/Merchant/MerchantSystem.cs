@@ -215,7 +215,10 @@ public class MerchantSystem : MonoBehaviour
     //显示商店界面
     public void MerchantPanelUIShow()
     {
+        GenerateShopItems();
+        CreateShopUI() ;
         MerchantPanelUI.gameObject.SetActive(true);
+
     }
     //隐藏商店界面
     public void MerchantPanelUIHide()

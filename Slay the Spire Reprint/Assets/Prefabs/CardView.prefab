@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 682039946597098078}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0368, y: 0.8075, z: 0}
+  m_LocalPosition: {x: -0.0258, y: 0.7976, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 90f7b1c84d35d344b849aa50db4eacba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 809bbce4c7732254ca70ab7aad775f9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.7622328, y: 2.342279}
+  m_Size: {x: 3.7785344, y: 2.3537812}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -211,8 +211,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6203018679263971304}
   m_Father: {fileID: 0}
@@ -234,11 +234,16 @@ MonoBehaviour:
   CardTypeText: {fileID: 3734611253878188643}
   mana: {fileID: 1087998076567297054}
   imageSR: {fileID: 7648885148936821388}
+  cardBackground: {fileID: 7457190998708751041}
   wrapper: {fileID: 3211717787308224418}
   dropAreaLayer:
     serializedVersion: 2
     m_Bits: 64
   sortingGroup: {fileID: 270144123862184979}
+  hoverStartScale: {x: 0.8, y: 0.8, z: 0.8}
+  hoverStartPosition: {x: 0, y: 0, z: 0}
+  hoverStartRotation: {x: 0, y: 0, z: 0, w: 0}
+  hoverOriginalMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
 --- !u!210 &270144123862184979
 SortingGroup:
   m_ObjectHideFlags: 0

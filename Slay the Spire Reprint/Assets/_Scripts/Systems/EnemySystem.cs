@@ -29,12 +29,19 @@ public class EnemySystem : MonoBehaviour
         ActionSystem.AttachPerformer<EnemyTurnGA>(EnemyTurnPerformer);
         ActionSystem.AttachPerformer<AttackHeroGA>(AttackHeroPerformer);
         ActionSystem.AttachPerformer<KillEnemyGA>(KillEnemyPerformer);
+
+        //添加订阅反应的函数
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
     private void OnDisable()
     {
         ActionSystem.DetachPerformer<EnemyTurnGA>();
         ActionSystem.DetachPerformer<AttackHeroGA>();
         ActionSystem.DetachPerformer<KillEnemyGA>();
+
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
 
     //初始化敌人系统，创建多个敌人视图
@@ -70,11 +77,26 @@ public class EnemySystem : MonoBehaviour
         }
     }
 
+    //敌人回合开始前显示敌人回合
+    private void EnemyTurnPreReaction(EnemyTurnGA enemyTurnGA)
+    {
+        CombatFeedbackSystem.Instance.ShowTurnText("敌人回合");
+    }
+    //敌人执行回合结束后的反应，为显示玩家回合
+    private void EnemyTurnPostReaction(EnemyTurnGA deemyTurnGA)
+    {
+        CombatFeedbackSystem.Instance.ShowTurnText("玩家回合");
+    }
+
     private IEnumerator EnemyTurnPerformer(EnemyTurnGA enemyTurnGA)
     {
         Debug.Log("进入敌人回合");
+        //CombatFeedbackSystem.Instance.ShowTurnText("敌人回合");
+        yield return new WaitForSeconds(1f);
+
+
         //遍历所有敌人，并添加相应攻击英雄反应
-        foreach(var enemyView in enemyBoardView.EnemyViews)
+        foreach (var enemyView in enemyBoardView.EnemyViews)
         {
             AttackHeroGA attackHeroGA = new(enemyView);
             ActionSystem.Instance.AddReaction(attackHeroGA);

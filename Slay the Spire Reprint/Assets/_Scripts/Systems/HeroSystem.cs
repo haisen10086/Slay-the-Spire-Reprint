@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,15 @@ public class HeroSystem : MonoBehaviour
     [field: SerializeField] public Transform DeckButtonUI { get; private set; }     //当前牌组查看按钮
     
     private bool DeckUIActive = false;
+    //定义添加卡牌事件的卡牌数据消息
+    public class AddCardEventArgs : EventArgs
+    { 
+        public Card card;
+    }
+    public event EventHandler<AddCardEventArgs> AddCardEvent;
+
+
+
     //初始化
     public void Setup(HeroDataSO heroDataSO)
     {
@@ -31,6 +41,10 @@ public class HeroSystem : MonoBehaviour
     {
         Deck.Add(card);
         CurrentDeckUI.AddCardUI(card);
+        AddCardEvent?.Invoke(this, new AddCardEventArgs
+        {
+            card = card
+        });
     }
 
     public void DeckUIToggle()

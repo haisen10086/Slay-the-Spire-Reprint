@@ -16,9 +16,22 @@ public abstract class BuffBase
 
 
     public abstract BuffBase DeepClone();
+    public CombatantView GetOwner()
+    {
+        if(owner == null) return null;
+        return owner;
+    }
     public virtual void OnApply(CombatantView target)
     {
         owner = target;
+        if(Icon != null)
+        {
+            CombatFeedbackSystem.Instance.ShowBuffSpriteVFX(target, Icon);
+        }
+        if(BuffName != null)
+        {
+            CombatFeedbackSystem.Instance.ShowBuffText(this.GetOwner(), this.BuffName);
+        }
     }
 
     public virtual void OnRemove()
